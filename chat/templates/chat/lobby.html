@@ -17,30 +17,31 @@
 
     <div id="messages"></div>
 
+    {{ roomID | json_script:"roomID" }}
     <script type="text/javascript">
-        const url = `ws://${window.location.host}/ws/socket-server/`
-        const chatSocket = new WebSocket(url)
+        const roomID = JSON.parse(document.getElementById('roomID').textContent);
+        const url = `ws://${window.location.host}/ws/chat/${roomID}/`;
+        const chatSocket = new WebSocket(url);
         chatSocket.onmessage = function (e) {
-            let data = JSON.parse(e.data)
-            console.log('Data:', data)
+            const data = JSON.parse(e.data);
 
             if (data.type === 'chat') {
-                const messages = document.getElementById('messages')
+                const messages = document.getElementById('messages');
                 messages.insertAdjacentHTML('beforeend', `<div>
                                         <p>${data.message}</p>
-                                    </div>`)
+                                    </div>`);
             }
-        }
+        };
 
-        const form = document.getElementById('form')
+        const form = document.getElementById('form');
         form.addEventListener('submit', (e) => {
-            e.preventDefault()
-            const message = e.target.message.value
+            e.preventDefault();
+            const message = e.target.message.value;
             chatSocket.send(JSON.stringify({
                 'message': message
-            }))
-            form.reset()
-        })
+            }));
+            form.reset();
+        });
     </script>
 </body>
 

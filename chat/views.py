@@ -3,4 +3,7 @@ from django.shortcuts import render
 
 
 def lobby(request):
-    return render(request, 'chat/lobby.html')
+    """ Chat Lobby """
+    return render(request, 'chat/lobby.html', {
+        'roomID': 'Test'
+    })
