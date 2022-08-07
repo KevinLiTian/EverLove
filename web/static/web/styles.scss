@@ -1,5 +1,6 @@
 $darkgreen: #6A7441;
 $pink: #fff3f3;
+$red: #F50057;
 
 * {
     box-sizing: border-box;
@@ -41,7 +42,7 @@ h1, h2, h3, p,
     background-color: $pink;
 
     span {
-        color: #F50057;
+        color: $red;
     }
 }
 
@@ -64,6 +65,9 @@ h1, h2, h3, p,
 
 #intro {
     background-color: #FFE9AE;
+    span {
+        color: #F9A826;
+    }
 }
 
 @media (max-width: 991px) {

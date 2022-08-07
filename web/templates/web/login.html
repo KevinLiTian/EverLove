@@ -18,7 +18,7 @@ EverLove Login
 {% endif %}
 
 <section class="d-flex justify-content-center align-items-center" id="login">
-    <div class="sign-form p-4 text-center">
+    <div class="sign-form p-4 text-center rounded-custom">
         <form action="{% url 'web:login' %}" method="post">
             {% csrf_token %}
             <a class="everlove" href="{% url 'web:index' %}">EverLove</a>

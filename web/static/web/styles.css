@@ -61,6 +61,9 @@ h1, h2, h3, p,
 #intro {
   background-color: #FFE9AE;
 }
+#intro span {
+  color: #F9A826;
+}
 
 @media (max-width: 991px) {
   .navbar .navbar-nav {
