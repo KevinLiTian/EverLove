@@ -8,7 +8,7 @@ EverLove Sign up
 {% block body %}
 <section class="d-flex justify-content-center align-items-center" id="login">
     <div class="sign-form p-4 text-center">
-        <form>
+        <form action="{% url 'web:register' %}" method="post">
             <a class="everlove" href="{% url 'web:index' %}">EverLove</a>
             <!-- Username input -->
             <div class="form-outline mt-3 mb-4">
