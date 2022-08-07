@@ -5,9 +5,21 @@
   font-family: system-ui, -apple-system, sans-serif, Helvetica, Arial;
 }
 
-h1, h2, h3, p,
+h1,
+h2,
+h3,
+p {
+  color: #59390F;
+}
+
 .nav-link {
   color: #59390F;
+}
+.nav-link:focus {
+  color: #59390F;
+}
+.nav-link:hover {
+  color: #6A7441;
 }
 
 .everlove {
@@ -30,7 +42,7 @@ h1, h2, h3, p,
 }
 
 .dropdown-item {
-  font-size: 20px;
+  font-size: 15px;
 }
 
 #about-us {
@@ -63,6 +75,18 @@ h1, h2, h3, p,
 }
 #intro span {
   color: #F9A826;
+}
+
+#spark {
+  background-color: #fff3f3;
+}
+
+.card {
+  transition: box-shadow 0.3s;
+}
+.card:hover {
+  cursor: pointer;
+  box-shadow: 0 0 11px rgba(33, 33, 33, 0.2);
 }
 
 @media (max-width: 991px) {

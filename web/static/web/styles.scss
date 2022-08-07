@@ -1,17 +1,32 @@
 $darkgreen: #6A7441;
 $pink: #fff3f3;
 $red: #F50057;
+$brown: #59390F;
 
 * {
     box-sizing: border-box;
     padding: 0;
     margin: 0;
-    font-family: system-ui,-apple-system, sans-serif,Helvetica,Arial;
+    font-family: system-ui, -apple-system, sans-serif, Helvetica, Arial;
 }
 
-h1, h2, h3, p,
+h1,
+h2,
+h3,
+p {
+    color: $brown;
+}
+
 .nav-link {
-    color: #59390F;
+    color: $brown;
+
+    &:focus {
+        color: $brown;
+    }
+
+    &:hover {
+        color: $darkgreen;
+    }
 }
 
 .everlove {
@@ -19,7 +34,9 @@ h1, h2, h3, p,
     font-size: 40px;
     color: $darkgreen;
     text-decoration: none;
-    &:hover, &:focus {
+
+    &:hover,
+    &:focus {
         color: $darkgreen;
     }
 }
@@ -34,7 +51,7 @@ h1, h2, h3, p,
 }
 
 .dropdown-item {
-    font-size: 20px;
+    font-size: 15px;
 }
 
 #about-us {
@@ -65,8 +82,22 @@ h1, h2, h3, p,
 
 #intro {
     background-color: #FFE9AE;
+
     span {
         color: #F9A826;
+    }
+}
+
+#spark {
+    background-color: $pink;
+}
+
+.card {
+    transition: box-shadow .3s;
+
+    &:hover {
+        cursor: pointer;
+        box-shadow: 0 0 11px rgba(33, 33, 33, .2);
     }
 }
 
