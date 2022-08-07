@@ -21,7 +21,24 @@ EverLove
                     <a href="#top" class="nav-link text-decoration-underline">About us</a>
                 </li>
                 <li class="nav-item me-lg-3"><a href="#" class="nav-link">Spark</a></li>
+
+                {% if user.is_authenticated %}
+                <div class="dropdown">
+                    <a href="#" class="nav-link dropdown-toggle" data-bs-toggle="dropdown">
+                        {{ user.username }}
+                    </a>
+                    <ul class="dropdown-menu">
+                        <li><a class="dropdown-item" href="#">Profile</a></li>
+                        <li>
+                            <hr class="dropdown-divider">
+                        </li>
+                        <li><a class="dropdown-item" href="{% url 'web:logout' %}">Sign out</a></li>
+                    </ul>
+                </div>
+                {% else %}
                 <li class="nav-item"><a href="{% url 'web:login' %}" class="nav-link" id="sign-in">Sign in</a></li>
+                {% endif %}
+
             </ul>
         </div>
     </div>
@@ -35,7 +52,7 @@ EverLove
                 <h1>Find Your <span>Spark</span></h1>
                 <p>EverLove is dedicated to let you meet your Soulmate <br>
                     Matching perfect couples based on personalities, life-styles, hobbies and more</p>
-                <a class="btn btn-warning btn-lg mt-3" href="{% url 'web:register' %}">Get Started</a>
+                <a class="btn btn-warning btn-lg mt-3" href="{% url 'web:register' %}">Sign up</a>
             </div>
             <img class="img-fluid pt-5 w-50 d-none d-md-block" src="{% static 'web/love.svg' %}" alt="love">
         </div>

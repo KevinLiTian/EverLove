@@ -38,7 +38,7 @@ def login_view(request):
 def logout_view(request):
     """ Logout View """
     logout(request)
-    return redirect("index")
+    return redirect("web:index")
 
 
 def register(request):
