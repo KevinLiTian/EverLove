@@ -40,6 +40,7 @@ INSTALLED_APPS = [
     'django.contrib.messages',
     'django.contrib.staticfiles',
 
+    'web',
     'chat',
 ]
 
@@ -92,7 +93,7 @@ DATABASES = {
     }
 }
 
-AUTH_USER_MODEL = 'chat.User'
+AUTH_USER_MODEL = 'web.User'
 
 
 # Password validation

@@ -1,0 +1,37 @@
+{% extends 'web/layout.html' %}
+{% load static %}
+
+{% block title %}
+EverLove Sign up
+{% endblock %}
+
+{% block body %}
+<section class="d-flex justify-content-center align-items-center" id="login">
+    <div class="sign-form p-4 text-center">
+        <form>
+            <a class="everlove" href="{% url 'web:index' %}">EverLove</a>
+            <!-- Username input -->
+            <div class="form-outline mt-3 mb-4">
+                <input type="text" class="form-control" placeholder="Username" autofocus required />
+            </div>
+
+            <!-- Password input -->
+            <div class="form-outline mb-4">
+                <input type="password" class="form-control" placeholder="Password" required />
+            </div>
+
+            <div class="form-outline mb-4">
+                <input type="password" class="form-control" placeholder="Confirm Password" required>
+            </div>
+
+            <!-- Submit button -->
+            <button type="button" class="btn btn-primary btn-block mb-4 disabled">Sign up</button>
+
+            <!-- Register buttons -->
+            <div class="mt-2">
+                <p>Already a member? <a href="{% url 'web:login' %}">Sign in</a></p>
+            </div>
+        </form>
+    </div>
+</section>
+{% endblock %}

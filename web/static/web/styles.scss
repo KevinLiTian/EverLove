@@ -1,0 +1,67 @@
+$darkgreen: #6A7441;
+$pink: #fff3f3;
+
+* {
+    box-sizing: border-box;
+    padding: 0;
+    margin: 0;
+}
+
+h1, h2, h3, p,
+.nav-link {
+    color: #59390F;
+}
+
+.everlove {
+    font-family: Alex Brush;
+    font-size: 40px;
+    color: $darkgreen;
+    text-decoration: none;
+    &:hover, &:focus {
+        color: $darkgreen;
+    }
+}
+
+#nav-ul {
+    font-family: Bebas Neue;
+    font-size: 24px;
+}
+
+#sign-in {
+    color: $darkgreen;
+}
+
+#about-us {
+    margin-top: 5rem;
+    background-color: $pink;
+
+    span {
+        color: #F50057;
+    }
+}
+
+#login {
+    background-color: $pink;
+    height: 100vh;
+}
+
+.sign-form {
+    height: 30%;
+    min-height: 400px;
+    width: 25%;
+    min-width: 300px;
+    background-color: white;
+    border-radius: 20px;
+}
+
+@media (max-width: 991px) {
+    .navbar .navbar-nav {
+        display: inline-block;
+        float: none;
+        vertical-align: top;
+    }
+
+    .navbar .navbar-collapse {
+        text-align: center;
+    }
+}
