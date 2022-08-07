@@ -88,10 +88,6 @@ p {
     }
 }
 
-#spark {
-    background-color: $pink;
-}
-
 .card {
     transition: box-shadow .3s;
 
@@ -99,6 +95,42 @@ p {
         cursor: pointer;
         box-shadow: 0 0 11px rgba(33, 33, 33, .2);
     }
+}
+
+#spark {
+    background-color: $pink;
+
+    span {
+        color: $red;
+        position: relative;
+
+        &:hover {
+            cursor: pointer;
+        }
+
+        &::before {
+            content: "";
+            position: absolute;
+            display: block;
+            width: 100%;
+            height: 2px;
+            bottom: 0;
+            left: 0;
+            background-color: $red;
+            transform: scaleX(0);
+            transition: transform 0.3s ease;
+        }
+
+        &:hover::before {
+            transform: scaleX(1);
+        }
+    }
+}
+
+footer {
+    background-color: $pink;
+    padding-top: 3rem;
+    padding-bottom: 1rem;
 }
 
 @media (max-width: 991px) {

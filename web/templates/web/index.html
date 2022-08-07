@@ -20,7 +20,7 @@ EverLove
                 <li class="nav-item me-lg-3">
                     <a href="#top" class="nav-link">About us</a>
                 </li>
-                <li class="nav-item me-lg-3"><a href="#" class="nav-link">Spark</a></li>
+                <li class="nav-item me-lg-3"><a href="#spark" class="nav-link">Spark</a></li>
 
                 {% if user.is_authenticated %}
                 <div class="dropdown">
@@ -87,6 +87,12 @@ EverLove
 <!-- Spark Section-->
 <section id="spark">
     <div class="container py-5">
+
+        <div class="text-center pb-4">
+            <h1>Match based on your <span>Profile</span></h1>
+            <a class="btn btn-danger btn-lg my-4" href="#">Match!</a>
+        </div>
+
         <div class="row text-center g-4">
             <div class="col-md">
                 <div class="card">
@@ -144,5 +150,14 @@ EverLove
         </div>
     </div>
 </section>
+
+<footer>
+    <div class="container">
+        <div class="row text-center">
+            <div class="col-md-6 offset-md-3">Copyright © 2022-Present EverLove Inc. All rights reserved</div>
+            <div class="col-md-3 fs-6 blockquote-footer text-md-end">You always gain love by giving love</div>
+        </div>
+    </div>
+</footer>
 
 {% endblock %}
