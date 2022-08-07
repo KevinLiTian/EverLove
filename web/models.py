@@ -11,7 +11,7 @@ class User(AbstractUser):
                              blank=True,
                              null=True)
     description = models.TextField(blank=True)
-    age = models.IntegerField(blank=True)
+    age = models.IntegerField(blank=True, null=True)
 
     def __str__(self):
         return f"{self.username}"

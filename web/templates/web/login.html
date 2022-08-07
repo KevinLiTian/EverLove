@@ -1,27 +1,39 @@
 {% extends 'web/layout.html' %}
 {% load static %}
 
+
 {% block title %}
 EverLove Login
 {% endblock %}
 
+
 {% block body %}
+
+{% if message %}
+<div class="fixed-top text-center">
+    <div class="alert alert-warning">
+        {{ message }}
+    </div>
+</div>
+{% endif %}
+
 <section class="d-flex justify-content-center align-items-center" id="login">
     <div class="sign-form p-4 text-center">
         <form action="{% url 'web:login' %}" method="post">
+            {% csrf_token %}
             <a class="everlove" href="{% url 'web:index' %}">EverLove</a>
             <!-- Username input -->
             <div class="form-outline mt-3 mb-4">
-                <input type="text" class="form-control" placeholder="Username" autofocus required />
+                <input type="text" class="form-control" placeholder="Username" name="username" autofocus required />
             </div>
 
             <!-- Password input -->
             <div class="form-outline mb-4">
-                <input type="password" class="form-control" placeholder="Password" required />
+                <input type="password" class="form-control" placeholder="Password" name="password" required />
             </div>
 
             <!-- Submit button -->
-            <button type="button" class="btn btn-primary btn-block mb-4 disabled">Sign in</button>
+            <input type="submit" class="btn btn-primary btn-block mb-4 disabled" value="Sign in" />
 
             <!-- Register buttons -->
             <div class="mt-5">
