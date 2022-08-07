@@ -18,7 +18,16 @@ EverLove Sign up
 {% endif %}
 
 <section class="d-flex justify-content-center align-items-center" id="login">
-    <div class="sign-form p-4 text-center">
+    {% if user.is_authenticated %}
+
+    <div class="text-center bg-white rounded-custom p-4">
+        <a class="everlove" href="{% url 'web:index' %}">EverLove</a>
+        <h3>You are already signed in</h3>
+        <h3>Ready to find your Soulmate?</h3>
+    </div>
+
+    {% else %}
+    <div class="sign-form p-4 text-center rounded-custom">
         <form action="{% url 'web:register' %}" method="post">
             {% csrf_token %}
             <a class="everlove" href="{% url 'web:index' %}">EverLove</a>
@@ -45,5 +54,7 @@ EverLove Sign up
             </div>
         </form>
     </div>
+    {% endif %}
 </section>
+
 {% endblock %}

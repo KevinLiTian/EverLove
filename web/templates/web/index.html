@@ -16,7 +16,7 @@ EverLove
             <span class="navbar-toggler-icon"></span>
         </button>
         <div class="collapse navbar-collapse" id="navmenu">
-            <ul class="navbar-nav ms-auto" id="nav-ul">
+            <ul class="navbar-nav ms-auto">
                 <li class="nav-item me-lg-3">
                     <a href="#top" class="nav-link text-decoration-underline">About us</a>
                 </li>
@@ -54,8 +54,33 @@ EverLove
                     Matching perfect couples based on personalities, life-styles, hobbies and more</p>
                 <a class="btn btn-warning btn-lg mt-3" href="{% url 'web:register' %}">Sign up</a>
             </div>
-            <img class="img-fluid pt-5 w-50 d-none d-md-block" src="{% static 'web/love.svg' %}" alt="love">
+            <img class="img-fluid pt-5 w-50 d-none d-md-block" src="{% static 'web/love1.svg' %}" alt="love1">
         </div>
     </div>
 </section>
+
+<!-- EverLove Intro -->
+<section id="intro">
+    <div class="container p-4 p-md-0 py-md-4">
+        <div class="row">
+            <div class="d-none d-md-flex col-3 align-items-center">
+                <img class="img-fluid" src="{% static 'web/love2.svg' %}" alt="love2">
+            </div>
+            <div class="d-none d-md-block col-1"></div>
+            <div class="col col-md-4 text-center">
+                <h1>What is EverLove?</h1>
+                <p>EverLove is an online dating application <br>
+                    In this fast-paced society, few people seem willing to have a slow relationship and deep affinity
+                    with others, we aim to help those who willing to slowly get to know each other and find natural like
+                    affinity to find other like-minded individuals
+                </p>
+            </div>
+            <div class="d-none d-md-block col-1"></div>
+            <div class="d-none d-md-flex col-3 align-items-center">
+                <img class="img-fluid" src="{% static 'web/love3.svg' %}" alt="love3">
+            </div>
+        </div>
+    </div>
+</section>
+
 {% endblock %}

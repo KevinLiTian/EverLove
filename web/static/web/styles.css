@@ -2,6 +2,7 @@
   box-sizing: border-box;
   padding: 0;
   margin: 0;
+  font-family: system-ui, -apple-system, sans-serif, Helvetica, Arial;
 }
 
 h1, h2, h3, p,
@@ -19,13 +20,17 @@ h1, h2, h3, p,
   color: #6A7441;
 }
 
-#nav-ul {
+.nav-link {
   font-family: Bebas Neue;
   font-size: 24px;
 }
 
 #sign-in {
   color: #6A7441;
+}
+
+.dropdown-item {
+  font-size: 20px;
 }
 
 #about-us {
@@ -47,7 +52,14 @@ h1, h2, h3, p,
   width: 25%;
   min-width: 300px;
   background-color: white;
+}
+
+.rounded-custom {
   border-radius: 20px;
+}
+
+#intro {
+  background-color: #FFE9AE;
 }
 
 @media (max-width: 991px) {
