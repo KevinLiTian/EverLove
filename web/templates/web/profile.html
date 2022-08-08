@@ -31,7 +31,6 @@
                         </select>
 
                         <h6 class="text-secondary">Age</h6>
-
                         {% if usr.age %}
                         <input class="form-control mb-2" name="age" value="{{ usr.age }}" />
                         {% else %}
@@ -55,7 +54,7 @@
 
                         <h6 class="text-secondary">Job</h6>
                         {% if usr.job %}
-                        <input class="form-control mb-2" name="job" value="{{ usr.job }}" />
+                        <input class="form-control mb-2" name="job" value="{{ usr.job.name }}" />
                         {% else %}
                         <input class="form-control mb-2" name="job" />
                         {% endif %}
@@ -96,8 +95,10 @@
                 </div>
             </div>
             <div class="text-center text-md-end">
-                <button type="button" class="btn btn-warning btn-lg">Update</button>
+                <button type="button" class="btn btn-warning btn-lg" id="update">Update</button>
             </div>
+
+            <input type="hidden" name="username" value="{{ user.username }}" />
         </form>
     </div>
 </section>

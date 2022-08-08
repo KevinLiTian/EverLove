@@ -32,3 +32,34 @@ if (document.querySelector(".sign-form")) {
     };
   });
 }
+
+if (document.querySelector("#profile")) {
+  const btn = document.querySelector("#update");
+  btn.onclick = () => {
+    const username = document.querySelector('[name="username"]').value;
+    const fullname = document.querySelector('[name="fullname"]').value;
+    const gender = document.querySelector('[name="gender"]').value;
+    const age = document.querySelector('[name="age"]').value;
+    const personality = document.querySelector('[name="mbti"]').value;
+    const job = document.querySelector('[name="job"]').value;
+    const sexuality = document.querySelector('[name="sexuality"]').value;
+    const description1 = document.querySelector('[name="description1"]').value;
+    const description2 = document.querySelector('[name="description2"]').value;
+
+    fetch(`/profile/${username}`, {
+      method: "PUT",
+      body: JSON.stringify({
+        fullname: fullname,
+        gender: gender,
+        age: age,
+        personality: personality,
+        job: job,
+        sexuality: sexuality,
+        description1: description1,
+        description2: description2,
+      }),
+    })
+      .then((response) => response.json())
+      .catch((err) => console.log(err));
+  };
+}
