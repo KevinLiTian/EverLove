@@ -1,0 +1,18 @@
+{% extends 'web/layout.html' %}
+{% load static %}
+
+
+{% block title %} {{ user.username }}'s Profile {% endblock %}
+
+
+{% block body %}
+<section id="profile">
+    <div class="container">
+        <div class="d-flex">
+            <h4>Profile</h4>
+            <h4>Soulmate</h4>
+            <h4>Match</h4>
+        </div>
+    </div>
+</section>
+{% endblock %}

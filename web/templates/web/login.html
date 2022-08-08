@@ -2,26 +2,23 @@
 {% load static %}
 
 
-{% block title %}
-EverLove Login
-{% endblock %}
+{% block title %} EverLove Sign in {% endblock %}
 
 
 {% block body %}
-
-{% if message %}
-<div class="fixed-top text-center">
-    <div class="alert alert-warning">
-        {{ message }}
-    </div>
-</div>
-{% endif %}
 
 <section class="d-flex justify-content-center align-items-center" id="login">
     <div class="sign-form p-4 text-center rounded-custom">
         <form action="{% url 'web:login' %}" method="post">
             {% csrf_token %}
             <a class="everlove" href="{% url 'web:index' %}">EverLove</a>
+
+            {% if message %}
+            <div class="alert alert-warning">
+                {{ message }}
+            </div>
+            {% endif %}
+
             <!-- Username input -->
             <div class="form-outline mt-3 mb-4">
                 <input type="text" class="form-control" placeholder="Username" name="username" autofocus required />

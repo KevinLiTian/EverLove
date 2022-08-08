@@ -1,5 +1,6 @@
 """ Views """
 from django.contrib.auth import authenticate, login, logout
+from django.contrib.auth.decorators import login_required
 from django.shortcuts import render, redirect
 from django.db import IntegrityError
 
@@ -69,3 +70,11 @@ def register(request):
 
     # GET
     return render(request, "web/register.html")
+
+
+@login_required(login_url="web:login")
+def profile(request, username):
+    """ User Profile Page """
+    if request.method == "GET":
+        usr = User.objects.get(username=username)
+        return render(request, "web/profile.html", {"usr": usr})

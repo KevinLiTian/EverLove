@@ -10,6 +10,10 @@ $brown: #59390F;
     font-family: system-ui, -apple-system, sans-serif, Helvetica, Arial;
 }
 
+nav {
+    background-color: $pink;
+}
+
 h1,
 h2,
 h3,
@@ -69,9 +73,8 @@ p {
 }
 
 .sign-form {
-    height: 30%;
-    min-height: 400px;
     width: 25%;
+    max-width: 500px;
     min-width: 300px;
     background-color: white;
 }
@@ -143,4 +146,8 @@ footer {
     .navbar .navbar-collapse {
         text-align: center;
     }
+}
+
+#profile {
+    background-color: $pink;
 }

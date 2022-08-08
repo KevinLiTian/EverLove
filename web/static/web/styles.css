@@ -5,6 +5,10 @@
   font-family: system-ui, -apple-system, sans-serif, Helvetica, Arial;
 }
 
+nav {
+  background-color: #fff3f3;
+}
+
 h1,
 h2,
 h3,
@@ -59,9 +63,8 @@ p {
 }
 
 .sign-form {
-  height: 30%;
-  min-height: 400px;
   width: 25%;
+  max-width: 500px;
   min-width: 300px;
   background-color: white;
 }
@@ -126,4 +129,7 @@ footer {
   .navbar .navbar-collapse {
     text-align: center;
   }
+}
+#profile {
+  background-color: #fff3f3;
 }/*# sourceMappingURL=styles.css.map */
