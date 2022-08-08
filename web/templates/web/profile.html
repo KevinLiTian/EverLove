@@ -17,17 +17,27 @@
                 <div class="col-10 offset-1 col-md-4 offset-md-0 bg-white shadow text-center py-4 rounded-custom">
                     <div class="text-start w-50 m-auto">
                         <h6 class="text-secondary">Full Name</h6>
-                        <input class="form-control mb-2" name="fullname" />
+                        <input class="form-control mb-2" name="fullname" value="{{ usr.fullname }}" />
 
                         <h6 class="text-secondary">Gender</h6>
                         <select class="form-select mb-2" name="gender">
                             {% for gender_notation, gender in genders %}
+                            {% if gender_notation == usr.gender %}
+                            <option selected value="{{ gender_notation }}">{{ gender }}</option>
+                            {% else %}
                             <option value="{{ gender_notation }}">{{ gender }}</option>
+                            {% endif %}
                             {% endfor %}
                         </select>
 
                         <h6 class="text-secondary">Age</h6>
+
+                        {% if usr.age %}
+                        <input class="form-control mb-2" name="age" value="{{ usr.age }}" />
+                        {% else %}
                         <input class="form-control mb-2" name="age" />
+                        {% endif %}
+
 
                         <h6 class="text-secondary">
                             <a class="text-secondary" href="https://www.16personalities.com/personality-types">MBTI</a>
@@ -35,29 +45,53 @@
                         </h6>
                         <select class="form-select mb-2" name="mbti">
                             {% for personality_notation, personality in personalities %}
+                            {% if personality_notation == usr.personality %}
+                            <option selected value="{{ personality_notation }}">{{ personality }}</option>
+                            {% else %}
                             <option value="{{ personality_notation }}">{{ personality }}</option>
+                            {% endif %}
                             {% endfor %}
                         </select>
 
                         <h6 class="text-secondary">Job</h6>
+                        {% if usr.job %}
+                        <input class="form-control mb-2" name="job" value="{{ usr.job }}" />
+                        {% else %}
                         <input class="form-control mb-2" name="job" />
+                        {% endif %}
                     </div>
                 </div>
 
                 <div class="col-10 offset-1 col-md-7 offset-md-1 bg-white shadow text-center py-4 rounded-custom">
                     <div class="text-start w-75 m-auto">
+
+                        {% if usr.description1 %}
+                        <textarea class="form-control mb-2" name="description1" placeholder="Introduce yourself!"
+                            rows="5">{{ usr.description1 }}</textarea>
+                        {% else %}
                         <textarea class="form-control mb-2" name="description1" placeholder="Introduce yourself!"
                             rows="5"></textarea>
+                        {% endif %}
 
                         <h6 class="text-secondary">Sexuality</h6>
                         <select name="sexuality" class="form-select mb-4">
                             {% for gender_notation, gender in genders %}
+                            {% if gender_notation == usr.sexuality %}
+                            <option selected value="{{ gender_notation }}">{{ gender }}</option>
+                            {% else %}
                             <option value="{{ gender_notation }}">{{ gender }}</option>
+                            {% endif %}
                             {% endfor %}
                         </select>
 
+                        {% if usr.description2 %}
+                        <textarea class="form-control" name="description2"
+                            placeholder="What type of person you are looking for?"
+                            rows="5">{{ usr.description2 }}</textarea>
+                        {% else %}
                         <textarea class="form-control" name="description2"
                             placeholder="What type of person you are looking for?" rows="5"></textarea>
+                        {% endif %}
                     </div>
                 </div>
             </div>

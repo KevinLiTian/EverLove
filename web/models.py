@@ -9,8 +9,16 @@ PERSONALITY_CHOICES = [('NA', ''), ('INTP', 'INTP'), ('INTJ', 'INTJ'),
                        ('ESFJ', 'ESFJ'), ('ISTP', 'ISTP'), ('ISFP', 'ISFP'),
                        ('ESTP', 'ESTP'), ('ESFP', 'ESFP')]
 
-GENDER_CHOICES = [('NA', ''), (0, 'Male'), (1, 'Female'), (2, 'Other'),
-                  (3, 'Prefer no to answer')]
+GENDER_CHOICES = [('NA', ''), ('Male', 'Male'), ('Female', 'Female'),
+                  ('Other', 'Other'), ('PNA', 'Prefer no to answer')]
+
+
+class Job(models.Model):
+    """ All Job """
+    name = models.CharField(max_length=64)
+
+    def __str__(self):
+        return f"{self.name}"
 
 
 class User(AbstractUser):
@@ -27,7 +35,19 @@ class User(AbstractUser):
                                    choices=PERSONALITY_CHOICES,
                                    default='NA')
 
-    description = models.TextField(default='')
+    job = models.ForeignKey(Job,
+                            on_delete=models.CASCADE,
+                            blank=True,
+                            null=True,
+                            related_name="people")
+
+    description1 = models.TextField(blank=True, null=True)
+
+    sexuality = models.CharField(max_length=32,
+                                 choices=GENDER_CHOICES,
+                                 default='NA')
+
+    description2 = models.TextField(blank=True, null=True)
 
     def __str__(self):
         return f"{self.username}"
