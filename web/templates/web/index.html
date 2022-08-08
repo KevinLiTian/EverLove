@@ -51,7 +51,11 @@
     <div class="container py-5">
 
         <div class="text-center pb-4">
-            <h1>Match based on your <span>Profile</span></h1>
+            {% if user.is_authenticated %}
+            <h1>Match based on your <span><a href="{% url 'web:profile' user.username %}">Profile</a></span></h1>
+            {% else %}
+            <h1>Match based on your <span><a href="{% url 'web:register' %}">Profile</a></span></h1>
+            {% endif %}
         </div>
 
         <div class="row text-center g-4">
@@ -111,16 +115,5 @@
         </div>
     </div>
 </section>
-
-<footer>
-    <div class="container">
-        <div class="row text-center">
-            <div class="col-md-6 offset-md-3">
-                <p>Copyright © 2022-Present EverLove Inc. All rights reserved</p>
-            </div>
-            <div class="col-md-3 fs-6 blockquote-footer text-md-end">You always gain love by giving love</div>
-        </div>
-    </div>
-</footer>
 
 {% endblock %}

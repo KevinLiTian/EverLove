@@ -59,7 +59,7 @@ p {
 }
 
 #about-us {
-    margin-top: 5rem;
+    padding-top: 5rem;
     background-color: $pink;
 
     span {
@@ -103,7 +103,8 @@ p {
 #spark {
     background-color: $pink;
 
-    span {
+    span a{
+        text-decoration: none;
         color: $red;
         position: relative;
 
@@ -149,5 +150,6 @@ footer {
 }
 
 #profile {
+    padding-top: 5.5rem;
     background-color: $pink;
 }

@@ -50,7 +50,7 @@ p {
 }
 
 #about-us {
-  margin-top: 5rem;
+  padding-top: 5rem;
   background-color: #fff3f3;
 }
 #about-us span {
@@ -91,14 +91,15 @@ p {
 #spark {
   background-color: #fff3f3;
 }
-#spark span {
+#spark span a {
+  text-decoration: none;
   color: #F50057;
   position: relative;
 }
-#spark span:hover {
+#spark span a:hover {
   cursor: pointer;
 }
-#spark span::before {
+#spark span a::before {
   content: "";
   position: absolute;
   display: block;
@@ -110,7 +111,7 @@ p {
   transform: scaleX(0);
   transition: transform 0.3s ease;
 }
-#spark span:hover::before {
+#spark span a:hover::before {
   transform: scaleX(1);
 }
 
@@ -131,5 +132,6 @@ footer {
   }
 }
 #profile {
+  padding-top: 5.5rem;
   background-color: #fff3f3;
 }/*# sourceMappingURL=styles.css.map */

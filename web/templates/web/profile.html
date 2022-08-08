@@ -8,11 +8,56 @@
 {% block body %}
 <section id="profile">
     <div class="container">
-        <div class="d-flex">
-            <h4>Profile</h4>
-            <h4>Soulmate</h4>
-            <h4>Match</h4>
+        <div class="text-center">
+            <h1>{{ usr.username }}'s Profile</h1>
         </div>
+
+        <form id="profile-form">
+            <div class="row py-5 gy-4 text-center">
+                <div class="col-10 offset-1 col-md-4 offset-md-0 shadow text-center py-4">
+                    <div class="text-start w-50 m-auto">
+                        <h6 class="text-secondary">Full Name</h6>
+                        <input class="form-control mb-2" name="fullname" />
+
+                        <h6 class="text-secondary">Gender</h6>
+                        <select class="form-select mb-2" name="gender">
+                            {% for gender_notation, gender in genders %}
+                            <option value="{{ gender_notation }}">{{ gender }}</option>
+                            {% endfor %}
+                        </select>
+
+                        <h6 class="text-secondary">Age</h6>
+                        <input class="form-control mb-2" name="age" />
+
+                        <h6 class="text-secondary">
+                            <a class="text-secondary" href="https://www.16personalities.com/personality-types">MBTI</a>
+                            Personality
+                        </h6>
+                        <select class="form-select mb-2" name="mbti">
+                            {% for personality_notation, personality in personalities %}
+                            <option value="{{ personality_notation }}">{{ personality }}</option>
+                            {% endfor %}
+                        </select>
+
+                        <h6 class="text-secondary">Job</h6>
+                        <input class="form-control mb-2" name="job" />
+                    </div>
+                </div>
+
+                <div class="col-10 offset-1 col-md-7 offset-md-1 shadow text-center py-4">
+                    <div class="text-start w-75 m-auto">
+                        <textarea class="form-control mb-4" name="description1" placeholder="Introduce yourself!"
+                            rows="7"></textarea>
+
+                        <textarea class="form-control" name="description2"
+                            placeholder="What type of person you are looking for?" rows="6"></textarea>
+                    </div>
+                </div>
+            </div>
+            <div class="text-center text-md-end">
+                <button type="button" class="btn btn-warning btn-lg">Update</button>
+            </div>
+        </form>
     </div>
 </section>
 {% endblock %}

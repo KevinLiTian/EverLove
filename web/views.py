@@ -4,7 +4,7 @@ from django.contrib.auth.decorators import login_required
 from django.shortcuts import render, redirect
 from django.db import IntegrityError
 
-from .models import User
+from .models import PERSONALITY_CHOICES, GENDER_CHOICES, User
 
 
 def index(request):
@@ -77,4 +77,14 @@ def profile(request, username):
     """ User Profile Page """
     if request.method == "GET":
         usr = User.objects.get(username=username)
-        return render(request, "web/profile.html", {"usr": usr})
+        return render(
+            request, "web/profile.html", {
+                "usr": usr,
+                "personalities": PERSONALITY_CHOICES,
+                "genders": GENDER_CHOICES
+            })
+
+    elif request.method == "PUT":
+        pass
+
+    return render(request, "web/profile.html", {"usr": usr})
