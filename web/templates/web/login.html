@@ -8,7 +8,7 @@
 {% block body %}
 
 <section class="d-flex justify-content-center align-items-center" id="login">
-    <div class="sign-form p-4 text-center rounded-custom">
+    <div class="sign-form p-4 text-center rounded-custom shadow">
         <form action="{% url 'web:login' %}" method="post">
             {% csrf_token %}
             <a class="everlove" href="{% url 'web:index' %}">EverLove</a>

@@ -14,7 +14,7 @@
 
         <form id="profile-form">
             <div class="row py-5 gy-4 text-center">
-                <div class="col-10 offset-1 col-md-4 offset-md-0 shadow text-center py-4">
+                <div class="col-10 offset-1 col-md-4 offset-md-0 bg-white shadow text-center py-4 rounded-custom">
                     <div class="text-start w-50 m-auto">
                         <h6 class="text-secondary">Full Name</h6>
                         <input class="form-control mb-2" name="fullname" />
@@ -44,13 +44,20 @@
                     </div>
                 </div>
 
-                <div class="col-10 offset-1 col-md-7 offset-md-1 shadow text-center py-4">
+                <div class="col-10 offset-1 col-md-7 offset-md-1 bg-white shadow text-center py-4 rounded-custom">
                     <div class="text-start w-75 m-auto">
-                        <textarea class="form-control mb-4" name="description1" placeholder="Introduce yourself!"
-                            rows="7"></textarea>
+                        <textarea class="form-control mb-2" name="description1" placeholder="Introduce yourself!"
+                            rows="5"></textarea>
+
+                        <h6 class="text-secondary">Sexuality</h6>
+                        <select name="sexuality" class="form-select mb-4">
+                            {% for gender_notation, gender in genders %}
+                            <option value="{{ gender_notation }}">{{ gender }}</option>
+                            {% endfor %}
+                        </select>
 
                         <textarea class="form-control" name="description2"
-                            placeholder="What type of person you are looking for?" rows="6"></textarea>
+                            placeholder="What type of person you are looking for?" rows="5"></textarea>
                     </div>
                 </div>
             </div>
