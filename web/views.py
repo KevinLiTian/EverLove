@@ -165,3 +165,9 @@ def spark(request):
             "hobbies": hobbies,
             "usrs": usrs
         })
+
+
+def filter_API(request):
+    """ Filter API """
+    data = json.loads(request.body)
+    

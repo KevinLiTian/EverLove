@@ -9,5 +9,6 @@ urlpatterns = [
     path('logout', views.logout_view, name="logout"),
     path('register', views.register, name="register"),
     path('profile/<str:username>', views.profile, name="profile"),
-    path('spark', views.spark, name="spark")
+    path('spark', views.spark, name="spark"),
+    path('filter_api', views.filter_API, name="filter_API")
 ]

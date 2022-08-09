@@ -83,3 +83,14 @@ if (document.querySelector("#profile")) {
     document.querySelector("textarea").disabled = true;
   }
 }
+
+if (document.querySelector("#match")) {
+  const filter_btn = document.querySelector("#filter-btn");
+  filter_btn.onclick = () => {
+    const gender = document.querySelector('[name="gender"]').value;
+    const age = document.querySelector('[name="age"]').value;
+    const personality = document.querySelector('[name="mbti"]').value;
+    const lifestyle = document.querySelector('[name="lifestyle"]').value;
+    const hobby = document.querySelector('[name="hobby"]').value;
+  };
+}
