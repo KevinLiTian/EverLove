@@ -34,40 +34,52 @@ if (document.querySelector(".sign-form")) {
 }
 
 if (document.querySelector("#profile")) {
-  const btn = document.querySelector("#update");
-  btn.onclick = () => {
-    btn.blur();
+  const cur_user = document.querySelector('[name="cur_user"]').value;
+  const username = document.querySelector('[name="username"]').value;
 
-    const username = document.querySelector('[name="username"]').value;
-    const fullname = document.querySelector('[name="fullname"]').value;
-    const gender = document.querySelector('[name="gender"]').value;
-    const age = document.querySelector('[name="age"]').value;
-    const personality = document.querySelector('[name="mbti"]').value;
-    const job = document.querySelector('[name="job"]').value;
-    const sexuality = document.querySelector('[name="sexuality"]').value;
-    const lifestyle = document.querySelector('[name="lifestyle"]').value;
-    const description = document.querySelector('[name="description"]').value;
-    const hobby1 = document.querySelector('[name="hobby1"]').value;
-    const hobby2 = document.querySelector('[name="hobby2"]').value;
-    const hobby3 = document.querySelector('[name="hobby3"]').value;
+  if (cur_user === username) {
+    const btn = document.querySelector("#update");
+    btn.onclick = () => {
+      btn.blur();
 
-    fetch(`/profile/${username}`, {
-      method: "PUT",
-      body: JSON.stringify({
-        fullname: fullname,
-        gender: gender,
-        age: age,
-        personality: personality,
-        job: job,
-        sexuality: sexuality,
-        lifestyle: lifestyle,
-        description: description,
-        hobby1: hobby1,
-        hobby2: hobby2,
-        hobby3: hobby3,
-      }),
-    })
-      .then((response) => response.json())
-      .catch((err) => console.log(err));
-  };
+      const fullname = document.querySelector('[name="fullname"]').value;
+      const gender = document.querySelector('[name="gender"]').value;
+      const age = document.querySelector('[name="age"]').value;
+      const personality = document.querySelector('[name="mbti"]').value;
+      const job = document.querySelector('[name="job"]').value;
+      const sexuality = document.querySelector('[name="sexuality"]').value;
+      const lifestyle = document.querySelector('[name="lifestyle"]').value;
+      const description = document.querySelector('[name="description"]').value;
+      const hobby1 = document.querySelector('[name="hobby1"]').value;
+      const hobby2 = document.querySelector('[name="hobby2"]').value;
+      const hobby3 = document.querySelector('[name="hobby3"]').value;
+
+      fetch(`/profile/${username}`, {
+        method: "PUT",
+        body: JSON.stringify({
+          fullname: fullname,
+          gender: gender,
+          age: age,
+          personality: personality,
+          job: job,
+          sexuality: sexuality,
+          lifestyle: lifestyle,
+          description: description,
+          hobby1: hobby1,
+          hobby2: hobby2,
+          hobby3: hobby3,
+        }),
+      })
+        .then((response) => response.json())
+        .catch((err) => console.log(err));
+    };
+  } else {
+    document.querySelectorAll("input").forEach((input) => {
+      input.disabled = true;
+    });
+    document.querySelectorAll("select").forEach((select) => {
+      select.disabled = true;
+    });
+    document.querySelector("textarea").disabled = true;
+  }
 }

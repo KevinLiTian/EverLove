@@ -139,11 +139,19 @@
                     </div>
                 </div>
             </div>
+
+            {% if user.username == usr.username %}
             <div class="text-center text-md-end">
                 <button type="button" class="btn btn-warning btn-lg" id="update">Update</button>
             </div>
+            {% else %}
+            <div class="text-center text-md-end">
+                <button type="button" class="btn btn-warning btn-lg" id="chat">Chat</button>
+            </div>
+            {% endif %}
 
-            <input type="hidden" name="username" value="{{ user.username }}" />
+            <input type="hidden" name="username" value="{{ usr.username }}" />
+            <input type="hidden" name="cur_user" value="{{ user.username }}" />
         </form>
     </div>
 </section>
