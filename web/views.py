@@ -1,5 +1,6 @@
 """ Views """
 import json
+import re
 from django.contrib.auth import authenticate, login, logout
 from django.contrib.auth.decorators import login_required
 from django.shortcuts import render, redirect
@@ -7,7 +8,7 @@ from django.http import JsonResponse
 from django.db import IntegrityError
 from django.views.decorators.csrf import csrf_exempt
 
-from .models import PERSONALITY_CHOICES, GENDER_CHOICES, User, Job
+from .models import PERSONALITY_CHOICES, GENDER_CHOICES, LIFE_STYLE_CHOICES, User, Job, Hobby, UserWithHobby
 
 
 def index(request):
@@ -81,11 +82,20 @@ def profile(request, username):
     """ User Profile Page """
     if request.method == "GET":
         usr = User.objects.get(username=username)
+        hobbies = [usr_hobby.hobby for usr_hobby in usr.hobbies.all()]
+        hobby1 = (hobbies[0] if len(hobbies) >= 1 else None)
+        hobby2 = (hobbies[1] if len(hobbies) >= 2 else None)
+        hobby3 = (hobbies[2] if len(hobbies) == 3 else None)
+
         return render(
             request, "web/profile.html", {
                 "usr": usr,
+                "hobby1": hobby1,
+                "hobby2": hobby2,
+                "hobby3": hobby3,
                 "personalities": PERSONALITY_CHOICES,
-                "genders": GENDER_CHOICES
+                "genders": GENDER_CHOICES,
+                "lifestyles": LIFE_STYLE_CHOICES
             })
 
     # API
@@ -97,15 +107,21 @@ def profile(request, username):
         personality = data["personality"]
         job = data["job"]
         sexuality = data["sexuality"]
-        description1 = data["description1"]
-        description2 = data["description2"]
+        lifestyle = data["lifestyle"]
+        description = data["description"]
+        hobbies = (data["hobby1"], data["hobby2"], data["hobby3"])
 
         usr = User.objects.get(username=username)
+
         usr.fullname = fullname
         usr.gender = gender
         usr.age = age
         usr.personality = personality
+        usr.sexuality = sexuality
+        usr.lifestyle = lifestyle
+        usr.description = description
 
+        # Job processing
         if job != '':
             job = job.lower()
             job_obj = Job.objects.filter(name=job)
@@ -114,11 +130,29 @@ def profile(request, username):
             else:
                 usr.job = Job.objects.create(name=job)
 
-        usr.sexuality = sexuality
-        usr.description1 = description1
-        usr.description2 = description2
+        # Hobby Processing
+        for usr_hobby in usr.hobbies.all():
+            usr_hobby.delete()
+
+        for hobby in hobbies:
+            if hobby == '':
+                continue
+
+            hobby = hobby.lower()
+            hobby_obj = Hobby.objects.filter(name=hobby)
+            if not hobby_obj:
+                hobby_obj = Hobby.objects.create(name=hobby)
+                UserWithHobby.objects.create(hobby=hobby_obj, usr=usr)
+
+            else:
+                UserWithHobby.objects.create(hobby=hobby_obj[0], usr=usr)
+
         usr.save()
 
         return JsonResponse({"Success": "Data updated."}, status=200)
 
     return JsonResponse({"error": "GET or PUT"}, status=403)
+
+
+def spark(request):
+    return render(request, 'web/spark.html')

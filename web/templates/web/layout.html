@@ -33,7 +33,7 @@
                     <li class="nav-item me-lg-3">
                         <a href="{% url 'web:index' %}" class="nav-link">Home</a>
                     </li>
-                    <li class="nav-item me-lg-3"><a href="#spark" class="nav-link">Spark</a></li>
+                    <li class="nav-item me-lg-3"><a href="{% url 'web:spark' %}" class="nav-link">Spark</a></li>
 
                     {% if user.is_authenticated %}
                     <div class="dropdown">

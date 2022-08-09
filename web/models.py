@@ -12,9 +12,21 @@ PERSONALITY_CHOICES = [('NA', ''), ('INTP', 'INTP'), ('INTJ', 'INTJ'),
 GENDER_CHOICES = [('NA', ''), ('Male', 'Male'), ('Female', 'Female'),
                   ('Other', 'Other'), ('PNA', 'Prefer no to answer')]
 
+LIFE_STYLE_CHOICES = [('NA', ''), ('HED', 'hedonistic'),
+                      ('ADV', 'adventuristic'), ('IND', 'individualistic'),
+                      ('PRO', 'promethean')]
+
 
 class Job(models.Model):
     """ All Job """
+    name = models.CharField(max_length=64)
+
+    def __str__(self):
+        return f"{self.name}"
+
+
+class Hobby(models.Model):
+    """ All Hobbies """
     name = models.CharField(max_length=64)
 
     def __str__(self):
@@ -41,13 +53,28 @@ class User(AbstractUser):
                             null=True,
                             related_name="people")
 
-    description1 = models.TextField(blank=True, null=True)
+    description = models.TextField(blank=True, null=True)
 
     sexuality = models.CharField(max_length=32,
                                  choices=GENDER_CHOICES,
                                  default='NA')
 
-    description2 = models.TextField(blank=True, null=True)
+    lifestyle = models.CharField(max_length=3,
+                                 choices=LIFE_STYLE_CHOICES,
+                                 default='NA')
 
     def __str__(self):
         return f"{self.username}"
+
+
+class UserWithHobby(models.Model):
+    """ Link User to Hobbies """
+    hobby = models.ForeignKey(Hobby,
+                              on_delete=models.CASCADE,
+                              related_name="usrs")
+    usr = models.ForeignKey(User,
+                            on_delete=models.CASCADE,
+                            related_name="hobbies")
+
+    def __str__(self):
+        return f"{self.usr} has hobby of {self.hobby}"

@@ -45,8 +45,11 @@ if (document.querySelector("#profile")) {
     const personality = document.querySelector('[name="mbti"]').value;
     const job = document.querySelector('[name="job"]').value;
     const sexuality = document.querySelector('[name="sexuality"]').value;
-    const description1 = document.querySelector('[name="description1"]').value;
-    const description2 = document.querySelector('[name="description2"]').value;
+    const lifestyle = document.querySelector('[name="lifestyle"]').value;
+    const description = document.querySelector('[name="description"]').value;
+    const hobby1 = document.querySelector('[name="hobby1"]').value;
+    const hobby2 = document.querySelector('[name="hobby2"]').value;
+    const hobby3 = document.querySelector('[name="hobby3"]').value;
 
     fetch(`/profile/${username}`, {
       method: "PUT",
@@ -57,8 +60,11 @@ if (document.querySelector("#profile")) {
         personality: personality,
         job: job,
         sexuality: sexuality,
-        description1: description1,
-        description2: description2,
+        lifestyle: lifestyle,
+        description: description,
+        hobby1: hobby1,
+        hobby2: hobby2,
+        hobby3: hobby3,
       }),
     })
       .then((response) => response.json())

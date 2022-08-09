@@ -2,6 +2,8 @@ $darkgreen: #6A7441;
 $pink: #fff3f3;
 $red: #F50057;
 $brown: #59390F;
+$lightyellow: #FFE9AE;
+$orange: #F9A826;
 
 * {
     box-sizing: border-box;
@@ -84,10 +86,10 @@ p {
 }
 
 #intro {
-    background-color: #FFE9AE;
+    background-color: $lightyellow;
 
     span {
-        color: #F9A826;
+        color: $orange;
     }
 }
 
@@ -161,4 +163,13 @@ footer {
 textarea:focus, input:focus {
     outline: none !important;
     box-shadow: none !important;
+}
+
+#match {
+    padding-top: 5rem;
+    background-color: $pink;
+
+    span {
+        color: $red;
+    }
 }

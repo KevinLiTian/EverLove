@@ -143,4 +143,12 @@ footer {
 textarea:focus, input:focus {
   outline: none !important;
   box-shadow: none !important;
+}
+
+#match {
+  padding-top: 5rem;
+  background-color: #fff3f3;
+}
+#match span {
+  color: #F50057;
 }/*# sourceMappingURL=styles.css.map */
