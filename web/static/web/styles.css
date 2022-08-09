@@ -134,4 +134,13 @@ footer {
 #profile {
   padding-top: 5.5rem;
   background-color: #fff3f3;
+}
+
+.bg-lighter-secondary {
+  background-color: #F0F0F0;
+}
+
+textarea:focus, input:focus {
+  outline: none !important;
+  box-shadow: none !important;
 }/*# sourceMappingURL=styles.css.map */

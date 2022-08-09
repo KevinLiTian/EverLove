@@ -89,7 +89,7 @@ def profile(request, username):
             })
 
     # API
-    elif request.method == "PUT":
+    if request.method == "PUT":
         data = json.loads(request.body)
         fullname = data["fullname"]
         gender = data["gender"]
@@ -121,9 +121,4 @@ def profile(request, username):
 
         return JsonResponse({"Success": "Data updated."}, status=200)
 
-    return render(
-        request, "web/profile.html", {
-            "usr": usr,
-            "personalities": PERSONALITY_CHOICES,
-            "genders": GENDER_CHOICES
-        })
+    return JsonResponse({"error": "GET or PUT"}, status=403)

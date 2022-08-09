@@ -36,6 +36,8 @@ if (document.querySelector(".sign-form")) {
 if (document.querySelector("#profile")) {
   const btn = document.querySelector("#update");
   btn.onclick = () => {
+    btn.blur();
+
     const username = document.querySelector('[name="username"]').value;
     const fullname = document.querySelector('[name="fullname"]').value;
     const gender = document.querySelector('[name="gender"]').value;

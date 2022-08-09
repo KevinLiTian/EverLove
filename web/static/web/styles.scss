@@ -153,3 +153,12 @@ footer {
     padding-top: 5.5rem;
     background-color: $pink;
 }
+
+.bg-lighter-secondary {
+    background-color: #F0F0F0;
+}
+
+textarea:focus, input:focus {
+    outline: none !important;
+    box-shadow: none !important;
+}

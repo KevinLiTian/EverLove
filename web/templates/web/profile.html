@@ -17,10 +17,11 @@
                 <div class="col-10 offset-1 col-md-4 offset-md-0 bg-white shadow text-center py-4 rounded-custom">
                     <div class="text-start w-50 m-auto">
                         <h6 class="text-secondary">Full Name</h6>
-                        <input class="form-control mb-2" name="fullname" value="{{ usr.fullname }}" />
+                        <input class="form-control mb-2 bg-lighter-secondary" name="fullname"
+                            value="{{ usr.fullname }}" />
 
                         <h6 class="text-secondary">Gender</h6>
-                        <select class="form-select mb-2" name="gender">
+                        <select class="form-select mb-2 bg-lighter-secondary" name="gender">
                             {% for gender_notation, gender in genders %}
                             {% if gender_notation == usr.gender %}
                             <option selected value="{{ gender_notation }}">{{ gender }}</option>
@@ -32,9 +33,9 @@
 
                         <h6 class="text-secondary">Age</h6>
                         {% if usr.age %}
-                        <input class="form-control mb-2" name="age" value="{{ usr.age }}" />
+                        <input class="form-control mb-2 bg-lighter-secondary" name="age" value="{{ usr.age }}" />
                         {% else %}
-                        <input class="form-control mb-2" name="age" />
+                        <input class="form-control mb-2 bg-lighter-secondary" name="age" />
                         {% endif %}
 
 
@@ -42,7 +43,7 @@
                             <a class="text-secondary" href="https://www.16personalities.com/personality-types">MBTI</a>
                             Personality
                         </h6>
-                        <select class="form-select mb-2" name="mbti">
+                        <select class="form-select mb-2 bg-lighter-secondary" name="mbti">
                             {% for personality_notation, personality in personalities %}
                             {% if personality_notation == usr.personality %}
                             <option selected value="{{ personality_notation }}">{{ personality }}</option>
@@ -54,9 +55,9 @@
 
                         <h6 class="text-secondary">Job</h6>
                         {% if usr.job %}
-                        <input class="form-control mb-2" name="job" value="{{ usr.job.name }}" />
+                        <input class="form-control mb-2 bg-lighter-secondary" name="job" value="{{ usr.job.name }}" />
                         {% else %}
-                        <input class="form-control mb-2" name="job" />
+                        <input class="form-control mb-2 bg-lighter-secondary" name="job" />
                         {% endif %}
                     </div>
                 </div>
@@ -65,15 +66,15 @@
                     <div class="text-start w-75 m-auto">
 
                         {% if usr.description1 %}
-                        <textarea class="form-control mb-2" name="description1" placeholder="Introduce yourself!"
-                            rows="5">{{ usr.description1 }}</textarea>
+                        <textarea class="form-control mb-2 bg-lighter-secondary" name="description1"
+                            placeholder="Introduce yourself!" rows="5">{{ usr.description1 }}</textarea>
                         {% else %}
-                        <textarea class="form-control mb-2" name="description1" placeholder="Introduce yourself!"
-                            rows="5"></textarea>
+                        <textarea class="form-control mb-2 bg-lighter-secondary" name="description1"
+                            placeholder="Introduce yourself!" rows="5"></textarea>
                         {% endif %}
 
                         <h6 class="text-secondary">Sexuality</h6>
-                        <select name="sexuality" class="form-select mb-4">
+                        <select name="sexuality" class="form-select mb-4 bg-lighter-secondary">
                             {% for gender_notation, gender in genders %}
                             {% if gender_notation == usr.sexuality %}
                             <option selected value="{{ gender_notation }}">{{ gender }}</option>
@@ -84,11 +85,11 @@
                         </select>
 
                         {% if usr.description2 %}
-                        <textarea class="form-control" name="description2"
+                        <textarea class="form-control bg-lighter-secondary" name="description2"
                             placeholder="What type of person you are looking for?"
                             rows="5">{{ usr.description2 }}</textarea>
                         {% else %}
-                        <textarea class="form-control" name="description2"
+                        <textarea class="form-control bg-lighter-secondary" name="description2"
                             placeholder="What type of person you are looking for?" rows="5"></textarea>
                         {% endif %}
                     </div>
