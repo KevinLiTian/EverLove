@@ -173,3 +173,16 @@ textarea:focus, input:focus {
         color: $red;
     }
 }
+
+.usr-box {
+    height: 150px;
+    width: 150px;
+    background-color: white;
+    border: 1px solid lightgray;
+    transition: box-shadow .3s;
+
+    &:hover {
+        cursor: pointer;
+        box-shadow: 0 0 11px rgba(33, 33, 33, .2);
+    }
+}

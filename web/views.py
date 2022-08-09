@@ -1,6 +1,5 @@
 """ Views """
 import json
-import re
 from django.contrib.auth import authenticate, login, logout
 from django.contrib.auth.decorators import login_required
 from django.shortcuts import render, redirect
@@ -8,7 +7,8 @@ from django.http import JsonResponse
 from django.db import IntegrityError
 from django.views.decorators.csrf import csrf_exempt
 
-from .models import PERSONALITY_CHOICES, GENDER_CHOICES, LIFE_STYLE_CHOICES, User, Job, Hobby, UserWithHobby
+from .models import PERSONALITY_CHOICES, GENDER_CHOICES, LIFE_STYLE_CHOICES, \
+                    User, Job, Hobby, UserWithHobby
 
 
 def index(request):
@@ -77,7 +77,6 @@ def register(request):
 
 
 @csrf_exempt
-@login_required(login_url="web:login")
 def profile(request, username):
     """ User Profile Page """
     if request.method == "GET":
@@ -155,4 +154,14 @@ def profile(request, username):
 
 
 def spark(request):
-    return render(request, 'web/spark.html')
+    """ Match Page """
+    hobbies = Hobby.objects.all()
+    usrs = User.objects.all()
+    return render(
+        request, 'web/spark.html', {
+            "personalities": PERSONALITY_CHOICES,
+            "genders": GENDER_CHOICES,
+            "lifestyles": LIFE_STYLE_CHOICES,
+            "hobbies": hobbies,
+            "usrs": usrs
+        })

@@ -12,6 +12,80 @@
         <div class="text-center py-4">
             <h1>Find Your <span>Spark</span></h1>
         </div>
+
+        <div class="row">
+            <div class="col-lg-2">
+                <h6 class="text-secondary">Gender</h6>
+                <select class="form-select mb-2" name="gender">
+                    {% for gender_notation, gender in genders %}
+                    <option value="{{ gender_notation }}">{{ gender }}</option>
+                    {% endfor %}
+                </select>
+
+                <h6 class="text-secondary">Age</h6>
+                <select name="age" class="form-select mb-2">
+                    <option value="0"></option>
+                    <option value="1">Below 20</option>
+                    <option value="2">20-25</option>
+                    <option value="3">26-30</option>
+                    <option value="4">30-35</option>
+                    <option value="5">36-40</option>
+                    <option value="6">40-45</option>
+                    <option value="7">46-50</option>
+                    <option value="8">Above 50</option>
+                </select>
+
+                <h6 class="text-secondary">
+                    <a class="text-secondary" href="https://www.16personalities.com/personality-types">MBTI</a>
+                    Personality
+                </h6>
+                <select class="form-select mb-2" name="mbti">
+                    {% for personality_notation, personality in personalities %}
+                    <option value="{{ personality_notation }}">{{ personality }}</option>
+                    {% endfor %}
+                </select>
+
+                <h6 class="text-secondary">Life Style</h6>
+                <select name="lifestyle" class="form-select mb-2">
+                    {% for life_notation, life in lifestyles %}
+                    <option value="{{ life_notation }}">{{ life }}</option>
+                    {% endfor %}
+                </select>
+
+                <h6 class="text-secondary">Hobby</h6>
+                <select name="hobby" class="form-select mb-4">
+                    <option value="0"></option>
+                    {% for hobby in hobbies %}
+                    <option value="{{ hobby }}">{{ hobby }}</option>
+                    {% endfor %}
+                </select>
+
+                <div class="text-center">
+                    <div class="mb-4 me-3 me-lg-0 d-inline d-lg-block">
+                        <button class="btn btn-warning btn-lg">Filter</button>
+                    </div>
+
+                    <div class="pb-lg-4 d-inline d-lg-block">
+                        <button class="btn btn-danger btn-lg">Match</button>
+                    </div>
+                </div>
+            </div>
+
+            <div class="col-lg-10 ps-lg-4">
+                <div class="d-flex flex-wrap align-items-center">
+                    {% for usr in usrs %}
+                    <a href="{% url 'web:profile' usr.username %}"
+                        class="usr-box d-flex flex-wrap text-center justify-content-center align-items-center rounded-custom m-3 m-lg-4 p-2 text-decoration-none text-secondary">
+                        {% if usr.fullname %}
+                        <h4>{{ usr.fullname }}</h4>
+                        {% else %}
+                        <h4>{{ usr.username }}</h4>
+                        {% endif %}
+                    </a>
+                    {% endfor %}
+                </div>
+            </div>
+        </div>
     </div>
 </section>
 {% endblock %}
