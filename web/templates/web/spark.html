@@ -69,7 +69,7 @@
                         {% if user.is_authenticated %}
                         <button type="button" class="btn btn-danger btn-lg" id="match-btn">Match</button>
                         {% else %}
-                        <a href="{% url 'web:match_api' %}" class="btn btn-danger btn-lg">Match</a>
+                        <a href="{% url 'web:login' %}" class="btn btn-danger btn-lg" id="match-btn">Match</a>
                         {% endif %}
                     </div>
                 </div>

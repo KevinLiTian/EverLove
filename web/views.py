@@ -272,5 +272,8 @@ def match_api(request):
             comparison_dict.items(), key=lambda item: item[1], reverse=True)
     ]
 
+    if len(selected_users) > 10:
+        selected_users = selected_users[:10]
+
     return JsonResponse([usr.serialize() for usr in selected_users],
                         safe=False)
