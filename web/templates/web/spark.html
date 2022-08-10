@@ -66,7 +66,11 @@
                     </div>
 
                     <div class="pb-lg-4 d-inline d-lg-block">
-                        <a href="{% url 'web:match_api' %}" class="btn btn-danger btn-lg" id="match-btn">Match</a>
+                        {% if user.is_authenticated %}
+                        <button type="button" class="btn btn-danger btn-lg" id="match-btn">Match</button>
+                        {% else %}
+                        <a href="{% url 'web:match_api' %}" class="btn btn-danger btn-lg">Match</a>
+                        {% endif %}
                     </div>
                 </div>
             </div>

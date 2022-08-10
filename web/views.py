@@ -238,4 +238,43 @@ def filter_api(request):
 
 @login_required(login_url="web:login")
 def match_api(request):
-    pass
+    """ Match API """
+    usr = User.objects.get(username=request.user.username)
+
+    gender = usr.gender
+    personality = usr.personality
+    sexuality = usr.sexuality
+    lifestyle = usr.lifestyle
+    hobbies = [usr_hobby.hobby for usr_hobby in usr.hobbies.all()]
+
+    selected_users = User.objects.all()
+    selected_users = selected_users.filter(gender=sexuality).filter(
+        sexuality=gender)
+
+    comparison_dict = {candidate: 0 for candidate in selected_users}
+
+    for candidate in comparison_dict:
+        if (candidate.personality.startswith('E') and personality.startswith('I')) or \
+            (candidate.personality.startswith('I') and personality.startswith('E')):
+            comparison_dict[candidate] += 1
+
+        if candidate.lifestyle == lifestyle:
+            comparison_dict[candidate] += 1
+
+        candidate_hobbies = [
+            candidate_hobby.hobby
+            for candidate_hobby in candidate.hobbies.all()
+        ]
+
+        comparison_dict[candidate] += len(
+            list(set(hobbies).intersection(candidate_hobbies)))
+
+    selected_users = [
+        pair[0] for pair in sorted(
+            comparison_dict.items(), key=lambda item: item[1], reverse=True)
+    ]
+
+    print(selected_users)
+
+    return JsonResponse([usr.serialize() for usr in selected_users],
+                        safe=False)

@@ -86,9 +86,12 @@ if (document.querySelector("#profile")) {
 
 if (document.querySelector("#match")) {
   const filter_btn = document.querySelector("#filter-btn");
+  const match_btn = document.querySelector("#match-btn");
+
   filter_btn.onclick = () => {
     filter_btn.blur();
     filter_btn.disabled = true;
+    match_btn.disabled = true;
 
     const gender = document.querySelector('[name="gender"]').value;
     const age = document.querySelector('[name="age"]').value;
@@ -158,6 +161,68 @@ if (document.querySelector("#match")) {
       .catch((err) => console.log(err));
     setTimeout(() => {
       filter_btn.disabled = false;
+      match_btn.disabled = false;
+    }, 2500);
+  };
+
+  match_btn.onclick = () => {
+    filter_btn.disabled = true;
+    match_btn.disabled = true;
+
+    document.querySelectorAll(".usr-box").forEach((box) => {
+      if (box.classList.contains("hide-box")) {
+        box.addEventListener("animationend", () => {
+          box.remove();
+        });
+        box.style.animationPlayState = "running";
+      }
+    });
+
+    fetch("/match_api")
+      .then((response) => response.json())
+      .then((usrs) => {
+        usrs.forEach((usr) => {
+          const username = usr["username"];
+          const fullname = usr["fullname"];
+
+          const container = document.querySelector("#usr-boxes");
+          const anchor = document.createElement("a");
+          anchor.href = `/profile/${username}`;
+          anchor.classList.add(
+            "usr-box",
+            "show-box",
+            "d-flex",
+            "flex-wrap",
+            "text-center",
+            "justify-content-center",
+            "align-items-center",
+            "rounded-custom",
+            "m-3",
+            "m-lg-4",
+            "p-2",
+            "text-decoration-none",
+            "text-secondary"
+          );
+          const name = document.createElement("h4");
+          if (fullname) {
+            name.innerHTML = fullname;
+          } else {
+            name.innerHTML = username;
+          }
+          anchor.append(name);
+          container.append(anchor);
+          anchor.style.animationPlayState = "running";
+          anchor.addEventListener("animationend", () => {
+            anchor.style.animationPlayState = "paused";
+            anchor.classList.remove("show-box");
+            anchor.classList.add("hide-box");
+          });
+        });
+      })
+      .catch((err) => console.log(err));
+    setTimeout(() => {
+      filter_btn.disabled = false;
+      match_btn.disabled = false;
     }, 2500);
   };
 }
