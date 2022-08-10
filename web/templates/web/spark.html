@@ -26,13 +26,13 @@
                 <select name="age" class="form-select mb-2">
                     <option value="0"></option>
                     <option value="1">Below 20</option>
-                    <option value="2">20-25</option>
-                    <option value="3">26-30</option>
-                    <option value="4">30-35</option>
-                    <option value="5">36-40</option>
-                    <option value="6">40-45</option>
-                    <option value="7">46-50</option>
-                    <option value="8">Above 50</option>
+                    <option value="2">20-24</option>
+                    <option value="3">25-29</option>
+                    <option value="4">30-34</option>
+                    <option value="5">35-39</option>
+                    <option value="6">40-44</option>
+                    <option value="7">45-49</option>
+                    <option value="8">50 and above</option>
                 </select>
 
                 <h6 class="text-secondary">
@@ -61,7 +61,7 @@
                 </select>
 
                 <div class="text-center mb-4">
-                    <div class="mb-4 me-3 me-lg-0 d-inline d-lg-block">
+                    <div class="mb-3 me-3 me-lg-0 d-inline d-lg-block">
                         <button class="btn btn-warning btn-lg" id="filter-btn">Filter</button>
                     </div>
 
@@ -72,10 +72,10 @@
             </div>
 
             <div class="col-lg-10 ps-lg-4">
-                <div class="d-flex flex-wrap align-items-center">
+                <div class="d-flex flex-wrap" id="usr-boxes">
                     {% for usr in usrs %}
                     <a href="{% url 'web:profile' usr.username %}"
-                        class="usr-box d-flex flex-wrap text-center justify-content-center align-items-center rounded-custom m-3 m-lg-4 p-2 text-decoration-none text-secondary">
+                        class="usr-box hide d-flex flex-wrap text-center justify-content-center align-items-center rounded-custom m-3 m-lg-4 p-2 text-decoration-none text-secondary">
                         {% if usr.fullname %}
                         <h4>{{ usr.fullname }}</h4>
                         {% else %}

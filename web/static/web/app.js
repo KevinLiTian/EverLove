@@ -87,10 +87,77 @@ if (document.querySelector("#profile")) {
 if (document.querySelector("#match")) {
   const filter_btn = document.querySelector("#filter-btn");
   filter_btn.onclick = () => {
+    filter_btn.blur();
+    filter_btn.disabled = true;
+
     const gender = document.querySelector('[name="gender"]').value;
     const age = document.querySelector('[name="age"]').value;
     const personality = document.querySelector('[name="mbti"]').value;
     const lifestyle = document.querySelector('[name="lifestyle"]').value;
     const hobby = document.querySelector('[name="hobby"]').value;
+
+    document.querySelectorAll(".usr-box").forEach((box) => {
+      if (box.classList.contains("hide")) {
+        box.addEventListener("animationend", () => {
+          box.remove();
+        });
+        box.style.animationPlayState = "running";
+      }
+    });
+
+    fetch(`/filter_api`, {
+      method: "POST",
+      body: JSON.stringify({
+        gender: gender,
+        age: age,
+        personality: personality,
+        lifestyle: lifestyle,
+        hobby: hobby,
+      }),
+    })
+      .then((response) => response.json())
+      .then((usrs) => {
+        usrs.forEach((usr) => {
+          const username = usr["username"];
+          const fullname = usr["fullname"];
+
+          const container = document.querySelector("#usr-boxes");
+          const anchor = document.createElement("a");
+          anchor.href = `/profile/${username}`;
+          anchor.classList.add(
+            "usr-box",
+            "show",
+            "d-flex",
+            "flex-wrap",
+            "text-center",
+            "justify-content-center",
+            "align-items-center",
+            "rounded-custom",
+            "m-3",
+            "m-lg-4",
+            "p-2",
+            "text-decoration-none",
+            "text-secondary"
+          );
+          const name = document.createElement("h4");
+          if (fullname) {
+            name.innerHTML = fullname;
+          } else {
+            name.innerHTML = username;
+          }
+          anchor.append(name);
+          container.append(anchor);
+          anchor.style.animationPlayState = "running";
+          anchor.addEventListener("animationend", () => {
+            anchor.style.animationPlayState = "paused";
+            anchor.classList.remove("show");
+            anchor.classList.add("hide");
+          });
+        });
+      })
+      .catch((err) => console.log(err));
+    setTimeout(() => {
+      filter_btn.disabled = false;
+    }, 2000);
   };
 }

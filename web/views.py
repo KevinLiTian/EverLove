@@ -1,7 +1,6 @@
 """ Views """
 import json
 from django.contrib.auth import authenticate, login, logout
-from django.contrib.auth.decorators import login_required
 from django.shortcuts import render, redirect
 from django.http import JsonResponse
 from django.db import IntegrityError
@@ -112,13 +111,13 @@ def profile(request, username):
 
         usr = User.objects.get(username=username)
 
-        usr.fullname = fullname
+        usr.fullname = fullname.strip()
         usr.gender = gender
         usr.age = age
         usr.personality = personality
         usr.sexuality = sexuality
         usr.lifestyle = lifestyle
-        usr.description = description
+        usr.description = description.strip()
 
         # Job processing
         if job != '':
@@ -167,7 +166,50 @@ def spark(request):
         })
 
 
-def filter_API(request):
+@csrf_exempt
+def filter_api(request):
     """ Filter API """
-    data = json.loads(request.body)
-    
+    if request.method == "POST":
+        data = json.loads(request.body)
+        gender = data["gender"]
+        age = data["age"]
+        personality = data["personality"]
+        lifestyle = data["lifestyle"]
+        hobby = data["hobby"]
+
+        selected_users = User.objects.all()
+        if gender != 'NA':
+            selected_users = selected_users.filter(gender=gender)
+
+        if age != '0':
+            if age == '1':
+                selected_users = selected_users.filter(age__lt=20)
+            elif age == '8':
+                selected_users = selected_users.filter(age__gte=50)
+            else:
+                low = 20 + (int(age) - 2) * 5
+                high = low + 4
+                selected_users = selected_users.filter(age__gte=low).filter(
+                    age__lte=high)
+
+        if personality != 'NA':
+            selected_users = selected_users.filter(personality=personality)
+
+        if lifestyle != 'NA':
+            selected_users = selected_users.filter(lifestyle=lifestyle)
+
+        if hobby != '0':
+            hobby_obj = Hobby.objects.get(name=hobby)
+            usr_with_hobby = (usr_hobby.usr
+                              for usr_hobby in hobby_obj.usrs.all())
+
+            final_selected_usrs = []
+            for usr in usr_with_hobby:
+                if usr in selected_users:
+                    final_selected_usrs.append(usr)
+
+        else:
+            final_selected_usrs = selected_users
+
+        return JsonResponse([usr.serialize() for usr in final_selected_usrs],
+                            safe=False)

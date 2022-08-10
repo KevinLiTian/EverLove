@@ -66,6 +66,10 @@ class User(AbstractUser):
     def __str__(self):
         return f"{self.username}"
 
+    def serialize(self):
+        """ JSON """
+        return {"username": self.username, "fullname": self.fullname}
+
 
 class UserWithHobby(models.Model):
     """ Link User to Hobbies """

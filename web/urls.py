@@ -10,5 +10,5 @@ urlpatterns = [
     path('register', views.register, name="register"),
     path('profile/<str:username>', views.profile, name="profile"),
     path('spark', views.spark, name="spark"),
-    path('filter_api', views.filter_API, name="filter_API")
+    path('filter_api', views.filter_api)
 ]
