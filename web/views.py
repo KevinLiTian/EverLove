@@ -215,11 +215,8 @@ def filter_api(request):
                 usr_hobby.usr for usr_hobby in hobby_obj.usrs.all()
             ]
 
-            print(usr_with_hobby)
-
             for usr in selected_users:
                 if usr not in usr_with_hobby:
-                    print(usr)
                     selected_users = selected_users.exclude(
                         username=usr.username)
 
@@ -273,8 +270,6 @@ def match_api(request):
         pair[0] for pair in sorted(
             comparison_dict.items(), key=lambda item: item[1], reverse=True)
     ]
-
-    print(selected_users)
 
     return JsonResponse([usr.serialize() for usr in selected_users],
                         safe=False)
