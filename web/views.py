@@ -1,6 +1,8 @@
 """ Views """
 import json
+import random
 from django.contrib.auth import authenticate, login, logout
+from django.contrib.auth.decorators import login_required
 from django.shortcuts import render, redirect
 from django.http import JsonResponse
 from django.db import IntegrityError
@@ -156,6 +158,15 @@ def spark(request):
     """ Match Page """
     hobbies = Hobby.objects.all()
     usrs = User.objects.all()
+
+    if request.user.is_authenticated:
+        usrs = usrs.exclude(username=request.user.username)
+
+    usrs = list(usrs)
+
+    if len(usrs) > 10:
+        usrs = random.sample(usrs, 10)
+
     return render(
         request, 'web/spark.html', {
             "personalities": PERSONALITY_CHOICES,
@@ -200,16 +211,31 @@ def filter_api(request):
 
         if hobby != '0':
             hobby_obj = Hobby.objects.get(name=hobby)
-            usr_with_hobby = (usr_hobby.usr
-                              for usr_hobby in hobby_obj.usrs.all())
+            usr_with_hobby = [
+                usr_hobby.usr for usr_hobby in hobby_obj.usrs.all()
+            ]
 
-            final_selected_usrs = []
-            for usr in usr_with_hobby:
-                if usr in selected_users:
-                    final_selected_usrs.append(usr)
+            print(usr_with_hobby)
 
-        else:
-            final_selected_usrs = selected_users
+            for usr in selected_users:
+                if usr not in usr_with_hobby:
+                    print(usr)
+                    selected_users = selected_users.exclude(
+                        username=usr.username)
 
-        return JsonResponse([usr.serialize() for usr in final_selected_usrs],
+        if request.user.is_authenticated:
+            selected_users = selected_users.exclude(
+                username=request.user.username)
+
+        selected_users = list(selected_users)
+
+        if len(selected_users) > 10:
+            selected_users = random.sample(selected_users, 10)
+
+        return JsonResponse([usr.serialize() for usr in selected_users],
                             safe=False)
+
+
+@login_required(login_url="web:login")
+def match_api(request):
+    pass
