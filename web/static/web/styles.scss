@@ -61,7 +61,6 @@ p {
 }
 
 #about-us {
-    padding-top: 5rem;
     background-color: $pink;
 
     span {
@@ -71,7 +70,7 @@ p {
 
 #login {
     background-color: $pink;
-    height: 100vh;
+    height: 80vh;
 }
 
 .sign-form {
@@ -135,8 +134,7 @@ p {
 
 footer {
     background-color: $pink;
-    padding-top: 3rem;
-    padding-bottom: 1rem;
+    padding: 1rem;
 }
 
 @media (max-width: 991px) {
@@ -152,7 +150,6 @@ footer {
 }
 
 #profile {
-    padding-top: 5.5rem;
     background-color: $pink;
 }
 
@@ -167,7 +164,6 @@ input:focus {
 }
 
 #match {
-    padding-top: 5rem;
     background-color: $pink;
 
     span {
@@ -188,14 +184,14 @@ input:focus {
     }
 }
 
-.hide {
+.hide-box {
     animation-name: hide;
     animation-duration: 1s;
     animation-fill-mode: forwards;
     animation-play-state: paused;
 }
 
-.show {
+.show-box {
     animation-name: show;
     animation-duration: 2s;
     animation-fill-mode: forwards;

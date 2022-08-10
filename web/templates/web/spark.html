@@ -75,7 +75,7 @@
                 <div class="d-flex flex-wrap" id="usr-boxes">
                     {% for usr in usrs %}
                     <a href="{% url 'web:profile' usr.username %}"
-                        class="usr-box hide d-flex flex-wrap text-center justify-content-center align-items-center rounded-custom m-3 m-lg-4 p-2 text-decoration-none text-secondary">
+                        class="usr-box hide-box d-flex flex-wrap text-center justify-content-center align-items-center rounded-custom m-3 m-lg-4 p-2 text-decoration-none text-secondary">
                         {% if usr.fullname %}
                         <h4>{{ usr.fullname }}</h4>
                         {% else %}

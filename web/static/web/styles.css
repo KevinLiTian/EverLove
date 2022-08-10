@@ -50,7 +50,6 @@ p {
 }
 
 #about-us {
-  padding-top: 5rem;
   background-color: #fff3f3;
 }
 #about-us span {
@@ -59,7 +58,7 @@ p {
 
 #login {
   background-color: #fff3f3;
-  height: 100vh;
+  height: 80vh;
 }
 
 .sign-form {
@@ -117,8 +116,7 @@ p {
 
 footer {
   background-color: #fff3f3;
-  padding-top: 3rem;
-  padding-bottom: 1rem;
+  padding: 1rem;
 }
 
 @media (max-width: 991px) {
@@ -132,7 +130,6 @@ footer {
   }
 }
 #profile {
-  padding-top: 5.5rem;
   background-color: #fff3f3;
 }
 
@@ -147,7 +144,6 @@ input:focus {
 }
 
 #match {
-  padding-top: 5rem;
   background-color: #fff3f3;
 }
 #match span {
@@ -166,7 +162,7 @@ input:focus {
   box-shadow: 0 0 11px rgba(33, 33, 33, 0.2);
 }
 
-.hide {
+.hide-box {
   -webkit-animation-name: hide;
           animation-name: hide;
   -webkit-animation-duration: 1s;
@@ -177,7 +173,7 @@ input:focus {
           animation-play-state: paused;
 }
 
-.show {
+.show-box {
   -webkit-animation-name: show;
           animation-name: show;
   -webkit-animation-duration: 2s;

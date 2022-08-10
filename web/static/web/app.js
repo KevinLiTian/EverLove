@@ -97,7 +97,7 @@ if (document.querySelector("#match")) {
     const hobby = document.querySelector('[name="hobby"]').value;
 
     document.querySelectorAll(".usr-box").forEach((box) => {
-      if (box.classList.contains("hide")) {
+      if (box.classList.contains("hide-box")) {
         box.addEventListener("animationend", () => {
           box.remove();
         });
@@ -126,7 +126,7 @@ if (document.querySelector("#match")) {
           anchor.href = `/profile/${username}`;
           anchor.classList.add(
             "usr-box",
-            "show",
+            "show-box",
             "d-flex",
             "flex-wrap",
             "text-center",
@@ -150,14 +150,14 @@ if (document.querySelector("#match")) {
           anchor.style.animationPlayState = "running";
           anchor.addEventListener("animationend", () => {
             anchor.style.animationPlayState = "paused";
-            anchor.classList.remove("show");
-            anchor.classList.add("hide");
+            anchor.classList.remove("show-box");
+            anchor.classList.add("hide-box");
           });
         });
       })
       .catch((err) => console.log(err));
     setTimeout(() => {
       filter_btn.disabled = false;
-    }, 2000);
+    }, 2500);
   };
 }

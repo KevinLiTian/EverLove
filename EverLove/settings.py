@@ -31,26 +31,16 @@ ALLOWED_HOSTS = []
 # Application definition
 
 INSTALLED_APPS = [
-    'channels',
-
+    'web',
     'django.contrib.admin',
     'django.contrib.auth',
     'django.contrib.contenttypes',
     'django.contrib.sessions',
     'django.contrib.messages',
-    'django.contrib.staticfiles',
-
-    'web',
-    'chat',
+    'django.contrib.staticfiles'
 ]
 
 ASGI_APPLICATION = 'EverLove.asgi.application'
-
-CHANNEL_LAYERS = {
-    'default':{
-        'BACKEND':'channels.layers.InMemoryChannelLayer'
-    }
-}
 
 MIDDLEWARE = [
     'django.middleware.security.SecurityMiddleware',

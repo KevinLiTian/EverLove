@@ -140,14 +140,13 @@
                 </div>
             </div>
 
-            {% if user.username == usr.username %}
-            <div class="text-center text-md-end">
+            {% if user.is_authenticated and user.username == usr.username%}
+            <div class="text-center text-md-end pb-3">
                 <button type="button" class="btn btn-warning btn-lg" id="update">Update</button>
             </div>
             {% else %}
-            <div class="text-center text-md-end">
-                <button type="button" class="btn btn-warning btn-lg" id="chat">Chat</button>
-            </div>
+            <div class="pb-4"></div>
+            <div class="pb-5"></div>
             {% endif %}
 
             <input type="hidden" name="username" value="{{ usr.username }}" />
