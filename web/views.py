@@ -244,10 +244,14 @@ def match_api(request):
     sexuality = usr.sexuality
     lifestyle = usr.lifestyle
     hobbies = [usr_hobby.hobby for usr_hobby in usr.hobbies.all()]
+    age = usr.age
 
     selected_users = User.objects.all()
     selected_users = selected_users.filter(gender=sexuality).filter(
         sexuality=gender)
+
+    if request.user.is_authenticated:
+        selected_users = selected_users.exclude(username=request.user.username)
 
     comparison_dict = {candidate: 0 for candidate in selected_users}
 
@@ -268,8 +272,10 @@ def match_api(request):
             list(set(hobbies).intersection(candidate_hobbies)))
 
     selected_users = [
-        pair[0] for pair in sorted(
-            comparison_dict.items(), key=lambda item: item[1], reverse=True)
+        pair[0]
+        for pair in sorted(comparison_dict.items(),
+                           key=lambda item: (item[1], -abs(item[0].age - age)),
+                           reverse=True)
     ]
 
     if len(selected_users) > 10:
