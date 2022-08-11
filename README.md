@@ -6,6 +6,10 @@ This is [CS50W](https://cs50.harvard.edu/web/2020/)'s final capstone project, ut
 
 We aim to help those who willing to slowly get to know each other and find deep, natural like affinity to find other like-minded individuals
 
+## Video Demo
+
+[![Watch the video](https://img.youtube.com/vi/yCBVv3y_VRE/hqdefault.jpg)](https://youtu.be/yCBVv3y_VRE)
+
 ## Distinctiveness and Complexity
 
 EverLove is an dating app where users each has their own profile, regarding personal information to better match a "soulmate". In addition, users can filter by gender, age, etc. to find the one they like, they can also hit the match button to use the matching algorithm to find who is most likely the "soulmate"
